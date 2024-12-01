@@ -33,6 +33,8 @@ app.get('/api/toy', (req, res) => {
         txt: req.query.txt || '',
         createdAt: +req.query.createdAt || 0,
         price: +req.query.price || 0,
+        isInStock: req.query.isInStock || '',
+        sort: req.query.sort || '',
         pageIdx: req.query.pageIdx || undefined,
     }
     toyService.query(filterBy)
@@ -65,7 +67,9 @@ app.post('/api/toy', (req, res) => {
     const toy = {
         name: req.body.name,
         price: +req.body.price,
-        createdAt: +req.body.createdAt,
+        createdAt: +req.body.createdAt || Date.now(),
+        inStock: req.body.inStock ?? true,
+        labels: req.body.labels || [],
     }
     toyService.save(toy, loggedinUser)
         .then(savedToy => res.send(savedToy))
@@ -80,10 +84,11 @@ app.put('/api/toy/:id', (req, res) => {
     if (!loggedinUser) return res.status(401).send('Cannot update toy')
 
     const toy = {
-        _id: req.params.id,
         name: req.body.name,
         price: +req.body.price,
-        createdAt: +req.body.createdAt,
+        createdAt: +req.body.createdAt || Date.now(),
+        inStock: req.body.inStock ?? true,
+        labels: req.body.labels || [],
     }
     toyService.save(toy, loggedinUser)
         .then(savedToy => res.send(savedToy))

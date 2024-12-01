@@ -3,7 +3,11 @@
     "_id": "t101",
     "name": "Talking Doll",
     "price": 123,
-    "labels": ["Doll", "Baby", "Battery Powered"],
+    "labels": [
+      "Doll",
+      "Baby",
+      "Battery Powered"
+    ],
     "createdAt": 1631031801011,
     "inStock": true,
     "owner": {
@@ -15,7 +19,11 @@
     "_id": "t102",
     "name": "Speed Racer",
     "price": 499,
-    "labels": ["On wheels", "Outdoor", "Battery Powered"],
+    "labels": [
+      "On wheels",
+      "Outdoor",
+      "Battery Powered"
+    ],
     "createdAt": 1631042802011,
     "inStock": false,
     "owner": {
@@ -27,7 +35,11 @@
     "_id": "t103",
     "name": "Art Puzzle",
     "price": 349,
-    "labels": ["Art", "Puzzle", "Box game"],
+    "labels": [
+      "Art",
+      "Puzzle",
+      "Box game"
+    ],
     "createdAt": 1631053803011,
     "inStock": true,
     "owner": {
@@ -40,7 +52,11 @@
     "_id": "t104",
     "name": "Baby Walker",
     "price": 879,
-    "labels": ["On wheels", "Baby", "Outdoor"],
+    "labels": [
+      "On wheels",
+      "Baby",
+      "Outdoor"
+    ],
     "createdAt": 1631064804011,
     "inStock": true,
     "owner": {
@@ -53,7 +69,11 @@
     "_id": "t105",
     "name": "Creative Kit",
     "price": 1239,
-    "labels": ["Art", "Box game", "Puzzle"],
+    "labels": [
+      "Art",
+      "Box game",
+      "Puzzle"
+    ],
     "createdAt": 1631075805011,
     "inStock": false,
     "owner": {
@@ -65,7 +85,11 @@
     "_id": "t106",
     "name": "Racing Car",
     "price": 5699,
-    "labels": ["On wheels", "Battery Powered", "Outdoor"],
+    "labels": [
+      "On wheels",
+      "Battery Powered",
+      "Outdoor"
+    ],
     "createdAt": 1631086806011,
     "inStock": true,
     "owner": {
@@ -77,12 +101,84 @@
     "_id": "t107",
     "name": "Interactive Doll",
     "price": 399,
-    "labels": ["Doll", "Battery Powered", "Baby"],
+    "labels": [
+      "Doll",
+      "Battery Powered",
+      "Baby"
+    ],
     "createdAt": 1631097807011,
     "inStock": false,
     "owner": {
       "_id": "tPNhk",
       "fullname": "cc"
+    }
+  },
+  {
+    "name": "Toy-374",
+    "price": 20,
+    "createdAt": 1733056147374,
+    "inStock": true,
+    "labels": [
+      "Art",
+      "Baby",
+      "Puzzle"
+    ],
+    "_id": "AXoOq",
+    "owner": {
+      "_id": "Uo93j",
+      "fullname": "admin",
+      "isAdmin": true
+    }
+  },
+  {
+    "name": "Toy-736",
+    "price": 46,
+    "createdAt": 1733056147736,
+    "inStock": false,
+    "labels": [
+      "Baby",
+      "Doll",
+      "Puzzle"
+    ],
+    "_id": "VJ8uc",
+    "owner": {
+      "_id": "Uo93j",
+      "fullname": "admin",
+      "isAdmin": true
+    }
+  },
+  {
+    "name": "Toy-178",
+    "price": 82,
+    "createdAt": 1733056148178,
+    "inStock": false,
+    "labels": [
+      "Baby",
+      "Outdoor",
+      "On wheels"
+    ],
+    "_id": "whAEA",
+    "owner": {
+      "_id": "Uo93j",
+      "fullname": "admin",
+      "isAdmin": true
+    }
+  },
+  {
+    "name": "Toy-506",
+    "price": 47,
+    "createdAt": 1733056148506,
+    "inStock": true,
+    "labels": [
+      "Baby",
+      "Box game",
+      "Outdoor"
+    ],
+    "_id": "scsei",
+    "owner": {
+      "_id": "Uo93j",
+      "fullname": "admin",
+      "isAdmin": true
     }
   }
 ]

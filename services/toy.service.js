@@ -10,7 +10,7 @@ export const toyService = {
     save
 }
 
-const PAGE_SIZE = 5
+// const PAGE_SIZE = 5
 const toys = utilService.readJsonFile('data/toy.json')
 
 function query(filterBy = { txt: '' }) {
@@ -22,6 +22,22 @@ function query(filterBy = { txt: '' }) {
     }
     if (filterBy.createdAt) {
         toysToReturn = toysToReturn.filter(toy => toy.createdAt >= filterBy.createdAt)
+    }
+
+    if (filterBy.isInStock !== undefined && filterBy.isInStock !== '') {
+        const isInStockBoolean = filterBy.isInStock === 'true'
+        toysToReturn = toysToReturn.filter(toy => toy.inStock === isInStockBoolean)
+    }
+
+    if (filterBy.sort) {
+        if (filterBy.sort === 'price') {
+            toysToReturn = toysToReturn.sort((a, b) => a.price - b.price)
+        } else if (filterBy.sort === 'createdAt') {
+            toysToReturn = toysToReturn.sort((a, b) => a.createdAt - b.createdAt)
+        }
+        else if (filterBy.sort === 'txt') {
+            toysToReturn = toysToReturn.sort((a, b) => a.name.localeCompare(b.name))
+        }
     }
 
     return Promise.resolve(toysToReturn)
@@ -53,8 +69,11 @@ function save(toy, loggedinUser) {
             return Promise.reject('Not your toy')
         }
         toyToUpdate.name = toy.name
+        toyToUpdate.updateAt = Date.now()
         toyToUpdate.createdAt = toy.createdAt
         toyToUpdate.price = toy.price
+        toyToUpdate.inStock = toy.inStock
+        toyToUpdate.labels = toy.inStock
         toy = toyToUpdate
     } else {
         toy._id = utilService.makeId()
