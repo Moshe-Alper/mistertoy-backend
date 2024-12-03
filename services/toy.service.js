@@ -4,7 +4,7 @@ import { utilService } from './util.service.js'
 import { loggerService } from './logger.service.js'
 
 
-const PAGE_SIZE = 5
+const PAGE_SIZE = 13
 export const toyService = {
     query,
     getById,
@@ -12,7 +12,6 @@ export const toyService = {
     save
 }
 
-// const PAGE_SIZE = 5
 const toys = utilService.readJsonFile('data/toy.json')
 
 function query(filterBy = { txt: '' }) {
@@ -39,7 +38,7 @@ function query(filterBy = { txt: '' }) {
 
     // sort
     const sortBy = filterBy.sortBy
-    console.log('sortBy:', sortBy)
+    // console.log('sortBy:', sortBy)
     if (sortBy && sortBy.type) {
         if (sortBy.type === 'txt') {
             filteredToys.sort((t1, t2) => (sortBy.desc ? -1 : 1) * t1.name.localeCompare(t2.name))
