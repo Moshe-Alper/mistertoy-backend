@@ -34,12 +34,13 @@ app.get('/api/toy', (req, res) => {
         createdAt: +req.query.createdAt || 0,
         price: +req.query.price || 0,
         isInStock: req.query.isInStock || '',
-        sort: req.query.sort || '',
+        labels: req.query.labels || [],
+        sortBy: req.query.sortBy,
         pageIdx: req.query.pageIdx || undefined,
     }
     toyService.query(filterBy)
         .then(toys => {
-            console.log(toys)
+            // console.log(toys)
             return toys
         })
         .then(toys => res.send(toys))
@@ -68,7 +69,7 @@ app.post('/api/toy', (req, res) => {
         name: req.body.name,
         price: +req.body.price,
         createdAt: +req.body.createdAt || Date.now(),
-        inStock: req.body.inStock ?? true,
+        inStock: req.body.inStock || null,
         labels: req.body.labels || [],
     }
     toyService.save(toy, loggedinUser)

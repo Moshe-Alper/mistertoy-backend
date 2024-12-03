@@ -3,6 +3,8 @@ import fs from 'fs'
 import { utilService } from './util.service.js'
 import { loggerService } from './logger.service.js'
 
+
+const PAGE_SIZE = 5
 export const toyService = {
     query,
     getById,
@@ -15,32 +17,48 @@ const toys = utilService.readJsonFile('data/toy.json')
 
 function query(filterBy = { txt: '' }) {
     const regex = new RegExp(filterBy.txt, 'i')
-    var toysToReturn = toys.filter(toy => regex.test(toy.name))
+    let filteredToys = toys.filter(toy => regex.test(toy.name))
 
     if (filterBy.price) {
-        toysToReturn = toysToReturn.filter(toy => toy.price <= filterBy.price)
+        filteredToys = filteredToys.filter(toy => toy.price <= filterBy.price)
     }
     if (filterBy.createdAt) {
-        toysToReturn = toysToReturn.filter(toy => toy.createdAt >= filterBy.createdAt)
+        filteredToys = filteredToys.filter(toy => toy.createdAt >= filterBy.createdAt)
     }
 
     if (filterBy.isInStock !== undefined && filterBy.isInStock !== '') {
         const isInStockBoolean = filterBy.isInStock === 'true'
-        toysToReturn = toysToReturn.filter(toy => toy.inStock === isInStockBoolean)
+        filteredToys = filteredToys.filter(toy => toy.inStock === isInStockBoolean)
     }
 
-    if (filterBy.sort) {
-        if (filterBy.sort === 'price') {
-            toysToReturn = toysToReturn.sort((a, b) => a.price - b.price)
-        } else if (filterBy.sort === 'createdAt') {
-            toysToReturn = toysToReturn.sort((a, b) => a.createdAt - b.createdAt)
+    if (filterBy.labels && filterBy.labels.length) {
+        filteredToys = filteredToys.filter(toy =>
+            filterBy.labels.every(label => toy.labels.includes(label))
+        )
+    }
+
+    // sort
+    const sortBy = filterBy.sortBy
+    console.log('sortBy:', sortBy)
+    if (sortBy && sortBy.type) {
+        if (sortBy.type === 'txt') {
+            filteredToys.sort((t1, t2) => (sortBy.desc ? -1 : 1) * t1.name.localeCompare(t2.name))
         }
-        else if (filterBy.sort === 'txt') {
-            toysToReturn = toysToReturn.sort((a, b) => a.name.localeCompare(b.name))
+        if (sortBy.type === 'createdAt') {
+            filteredToys.sort((t1, t2) => (sortBy.desc ? -1 : 1) * (t1.createdAt - t2.createdAt))
+        }
+        if (sortBy.type === 'price') {
+            filteredToys.sort((t1, t2) => (sortBy.desc ? -1 : 1) * (t1.price - t2.price))
         }
     }
 
-    return Promise.resolve(toysToReturn)
+    const { pageIdx } = filterBy
+    if (pageIdx !== undefined) {
+        let startIdx = +pageIdx * PAGE_SIZE
+        filteredToys = filteredToys.slice(startIdx, startIdx + PAGE_SIZE)
+    }
+
+    return Promise.resolve(filteredToys)
 }
 
 function getById(toyId) {
@@ -78,7 +96,7 @@ function save(toy, loggedinUser) {
     } else {
         toy._id = utilService.makeId()
         toy.owner = loggedinUser
-        toys.push(toy)
+        toys.unshift(toy)
     }
     delete toy.owner.score
     return _saveToysToFile().then(() => toy)
