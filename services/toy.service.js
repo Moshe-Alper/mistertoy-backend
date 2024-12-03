@@ -37,19 +37,18 @@ function query(filterBy = { txt: '' }) {
     }
 
     // sort
-    const sortBy = filterBy.sortBy
-    // console.log('sortBy:', sortBy)
-    if (sortBy && sortBy.type) {
+    const { sortBy } = filterBy
+    if (sortBy.type) {
+      filteredToys.sort((t1, t2) => {
+        const sortDirection = +sortBy.desc
         if (sortBy.type === 'txt') {
-            filteredToys.sort((t1, t2) => (sortBy.desc ? -1 : 1) * t1.name.localeCompare(t2.name))
+          return t1.name.localeCompare(t2.name) * sortDirection
+        } else if (sortBy.type === 'price' || sortBy.type === 'createdAt') {
+          return (t1[sortBy.type] - t2[sortBy.type]) * sortDirection
         }
-        if (sortBy.type === 'createdAt') {
-            filteredToys.sort((t1, t2) => (sortBy.desc ? -1 : 1) * (t1.createdAt - t2.createdAt))
-        }
-        if (sortBy.type === 'price') {
-            filteredToys.sort((t1, t2) => (sortBy.desc ? -1 : 1) * (t1.price - t2.price))
-        }
+      })
     }
+    // console.log('filteredToys:', filteredToys)
 
     const { pageIdx } = filterBy
     if (pageIdx !== undefined) {
