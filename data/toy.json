@@ -1,9 +1,56 @@
 [
   {
+    "name": "To",
+    "price": 22,
+    "createdAt": 1733582311718,
+    "inStock": true,
+    "labels": [],
+    "_id": "EJmfm",
+    "owner": {
+      "_id": "Uo93j",
+      "fullname": "admin",
+      "isAdmin": true
+    }
+  },
+  {
+    "name": "To",
+    "price": 72,
+    "createdAt": 1733582311718,
+    "inStock": null,
+    "labels": [],
+    "_id": "HEruE",
+    "owner": {
+      "_id": "Uo93j",
+      "fullname": "admin",
+      "isAdmin": true
+    }
+  },
+  {
+    "name": "Creative Kit",
+    "price": 0,
+    "createdAt": 1631075805011,
+    "inStock": false,
+    "labels": [
+      "Art",
+      "Box game",
+      "Puzzle"
+    ],
+    "_id": "NrHoZ",
+    "owner": {
+      "_id": "Uo93j",
+      "fullname": "admin",
+      "isAdmin": true
+    }
+  },
+  {
     "_id": "t101",
     "name": "Talking Doll",
     "price": 123,
-    "labels": ["Doll", "Baby", "Battery Powered"],
+    "labels": [
+      "Doll",
+      "Baby",
+      "Battery Powered"
+    ],
     "createdAt": 1631031801011,
     "inStock": true,
     "owner": {
@@ -15,7 +62,11 @@
     "_id": "t102",
     "name": "Speed Racer",
     "price": 49,
-    "labels": ["On wheels", "Outdoor", "Battery Powered"],
+    "labels": [
+      "On wheels",
+      "Outdoor",
+      "Battery Powered"
+    ],
     "createdAt": 1631042802011,
     "inStock": false,
     "owner": {
@@ -27,7 +78,11 @@
     "_id": "t103",
     "name": "Art Puzzle",
     "price": 349,
-    "labels": ["Art", "Puzzle", "Box game"],
+    "labels": [
+      "Art",
+      "Puzzle",
+      "Box game"
+    ],
     "createdAt": 1631053803011,
     "inStock": true,
     "owner": {
@@ -40,7 +95,11 @@
     "_id": "t104",
     "name": "Baby Walker",
     "price": 179,
-    "labels": ["On wheels", "Baby", "Outdoor"],
+    "labels": [
+      "On wheels",
+      "Baby",
+      "Outdoor"
+    ],
     "createdAt": 1631064804011,
     "inStock": true,
     "owner": {
@@ -53,7 +112,11 @@
     "_id": "t105",
     "name": "Creative Kit",
     "price": 239,
-    "labels": ["Art", "Box game", "Puzzle"],
+    "labels": [
+      "Art",
+      "Box game",
+      "Puzzle"
+    ],
     "createdAt": 1631075805011,
     "inStock": false,
     "owner": {
@@ -65,7 +128,11 @@
     "_id": "t106",
     "name": "Racing Car",
     "price": 199,
-    "labels": ["On wheels", "Battery Powered", "Outdoor"],
+    "labels": [
+      "On wheels",
+      "Battery Powered",
+      "Outdoor"
+    ],
     "createdAt": 1631086806011,
     "inStock": true,
     "owner": {
@@ -77,7 +144,11 @@
     "_id": "t107",
     "name": "Interactive Doll",
     "price": 58,
-    "labels": ["Doll", "Battery Powered", "Baby"],
+    "labels": [
+      "Doll",
+      "Battery Powered",
+      "Baby"
+    ],
     "createdAt": 1631097807011,
     "inStock": false,
     "owner": {
@@ -90,7 +161,11 @@
     "_id": "t108",
     "name": "Power Ranger Red",
     "price": 120,
-    "labels": ["Outdoor", "Battery Powered", "On wheels"],
+    "labels": [
+      "Outdoor",
+      "Battery Powered",
+      "On wheels"
+    ],
     "createdAt": 1632108801011,
     "inStock": true,
     "owner": {
@@ -103,7 +178,11 @@
     "_id": "t109",
     "name": "Ninja Turtle Leo",
     "price": 85,
-    "labels": ["Box game", "Puzzle", "Outdoor"],
+    "labels": [
+      "Box game",
+      "Puzzle",
+      "Outdoor"
+    ],
     "createdAt": 1632119802011,
     "inStock": true,
     "owner": {
@@ -116,7 +195,11 @@
     "_id": "t110",
     "name": "Superhero Batman",
     "price": 270,
-    "labels": ["Battery Powered", "Box game", "Art"],
+    "labels": [
+      "Battery Powered",
+      "Box game",
+      "Art"
+    ],
     "createdAt": 1632120803011,
     "inStock": false,
     "owner": {
@@ -129,7 +212,11 @@
     "_id": "t111",
     "name": "Power Ranger Blue",
     "price": 145,
-    "labels": ["On wheels", "Outdoor", "Baby"],
+    "labels": [
+      "On wheels",
+      "Outdoor",
+      "Baby"
+    ],
     "createdAt": 1632131804011,
     "inStock": true,
     "owner": {
@@ -142,7 +229,11 @@
     "_id": "t112",
     "name": "Ninja Turtle Mikey",
     "price": 60,
-    "labels": ["Puzzle", "Art", "Box game"],
+    "labels": [
+      "Puzzle",
+      "Art",
+      "Box game"
+    ],
     "createdAt": 1632142805011,
     "inStock": false,
     "owner": {
@@ -155,7 +246,11 @@
     "_id": "t113",
     "name": "Superhero Superman",
     "price": 250,
-    "labels": ["Doll", "Baby", "Battery Powered"],
+    "labels": [
+      "Doll",
+      "Baby",
+      "Battery Powered"
+    ],
     "createdAt": 1632153806011,
     "inStock": true,
     "owner": {
@@ -168,7 +263,11 @@
     "_id": "t114",
     "name": "Power Ranger Green",
     "price": 130,
-    "labels": ["Outdoor", "Battery Powered", "Baby"],
+    "labels": [
+      "Outdoor",
+      "Battery Powered",
+      "Baby"
+    ],
     "createdAt": 1632164807011,
     "inStock": true,
     "owner": {
@@ -181,7 +280,11 @@
     "_id": "t115",
     "name": "Ninja Turtle Don",
     "price": 75,
-    "labels": ["Puzzle", "Outdoor", "On wheels"],
+    "labels": [
+      "Puzzle",
+      "Outdoor",
+      "On wheels"
+    ],
     "createdAt": 1632175808011,
     "inStock": false,
     "owner": {
@@ -194,7 +297,11 @@
     "_id": "t116",
     "name": "Superhero Wonder Woman",
     "price": 190,
-    "labels": ["Box game", "Art", "Puzzle"],
+    "labels": [
+      "Box game",
+      "Art",
+      "Puzzle"
+    ],
     "createdAt": 1632186809011,
     "inStock": true,
     "owner": {
@@ -207,7 +314,11 @@
     "_id": "t117",
     "name": "Power Ranger Yellow",
     "price": 110,
-    "labels": ["Battery Powered", "Outdoor", "Doll"],
+    "labels": [
+      "Battery Powered",
+      "Outdoor",
+      "Doll"
+    ],
     "createdAt": 1632197810011,
     "inStock": true,
     "owner": {
@@ -220,7 +331,11 @@
     "_id": "t118",
     "name": "Ninja Turtle Raph",
     "price": 95,
-    "labels": ["Baby", "Art", "Puzzle"],
+    "labels": [
+      "Baby",
+      "Art",
+      "Puzzle"
+    ],
     "createdAt": 1632208811011,
     "inStock": false,
     "owner": {

@@ -4,7 +4,7 @@ import { utilService } from './util.service.js'
 import { loggerService } from './logger.service.js'
 
 
-const PAGE_SIZE = 13
+const PAGE_SIZE = 16
 export const toyService = {
     query,
     getById,

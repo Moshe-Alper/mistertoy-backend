@@ -34,5 +34,12 @@
     "fullname": "cc",
     "score": 10000,
     "_id": "tPNhk"
+  },
+  {
+    "username": "NEWUSER",
+    "password": "hello",
+    "fullname": "mosda=",
+    "score": 10000,
+    "_id": "Zf1u4"
   }
 ]
