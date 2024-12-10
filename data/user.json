@@ -41,5 +41,19 @@
     "fullname": "mosda=",
     "score": 10000,
     "_id": "Zf1u4"
+  },
+  {
+    "username": "WinterGuy",
+    "password": "12345678",
+    "fullname": "Winter Guy",
+    "score": 10000,
+    "_id": "kflj7"
+  },
+  {
+    "username": "Winter222",
+    "password": "12345678",
+    "fullname": "Winter Guy",
+    "score": 10000,
+    "_id": "1SYkg"
   }
 ]

@@ -42,7 +42,7 @@ function remove(userId) {
 }
 
 
-function save(user) {
+async function save(user) {
     let userToUpdate = user
     if (user._id) {
         userToUpdate = users.find(_user => user._id === _user._id)
@@ -51,14 +51,20 @@ function save(user) {
         userToUpdate._id = utilService.makeId()
         users.push(userToUpdate)
     }
+
     const miniUser = {
         _id: userToUpdate._id,
         fullname: userToUpdate.fullname,
         score: userToUpdate.score,
         isAdmin: user.isAdmin,
-
     }
-    return _saveUsersToFile().then(() => miniUser)
+
+    try {
+        await _saveUsersToFile()
+        return miniUser
+    } catch (err) {
+        throw new Error('Failed to save user data')
+    }
 }
 
 function checkLogin({ username, password }) {
@@ -90,14 +96,15 @@ function validateToken(token) {
     return user
 }
 
-function _saveUsersToFile() {
+async function _saveUsersToFile() {
     return new Promise((resolve, reject) => {
         const usersStr = JSON.stringify(users, null, 2)
         fs.writeFile('data/user.json', usersStr, err => {
             if (err) {
-                return console.log(err)
+                reject(err)
+            } else {
+                resolve()  
             }
-            resolve()
         })
     })
 }

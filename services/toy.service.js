@@ -77,39 +77,45 @@ function remove(toyId, loggedinUser) {
     return _saveToysToFile()
 }
 
-function save(toy, loggedinUser) {
-    if (toy._id) {
-        const toyToUpdate = toys.find(currToy => currToy._id === toy._id)
-        if (!loggedinUser.isAdmin &&
-            toyToUpdate.owner._id !== loggedinUser._id) {
-            return Promise.reject('Not your toy')
-        }
-        toyToUpdate.name = toy.name
-        toyToUpdate.updateAt = Date.now()
-        toyToUpdate.createdAt = toy.createdAt
-        toyToUpdate.price = toy.price
-        toyToUpdate.inStock = toy.inStock
-        toyToUpdate.labels = toy.inStock
-        toy = toyToUpdate
-    } else {
-        toy._id = utilService.makeId()
-        toy.owner = loggedinUser
-        toys.unshift(toy)
+async function save(toy, loggedinUser) { 
+    if (toy._id) { 
+        const toyToUpdate = toys.find(currToy => currToy._id === toy._id) 
+        if (!loggedinUser.isAdmin && 
+            toyToUpdate.owner._id !== loggedinUser._id) { 
+            throw new Error('Not your toy') 
+        } 
+        toyToUpdate.name = toy.name 
+        toyToUpdate.updateAt = Date.now() 
+        toyToUpdate.createdAt = toy.createdAt 
+        toyToUpdate.price = toy.price 
+        toyToUpdate.inStock = toy.inStock 
+        toyToUpdate.labels = toy.inStock 
+        toy = toyToUpdate 
+    } else { 
+        toy._id = utilService.makeId() 
+        toy.owner = loggedinUser 
+        toys.unshift(toy) 
+    } 
+    delete toy.owner.score 
+
+    try {
+        await _saveToysToFile() 
+        return toy
+    } catch (err) {
+        throw new Error('Failed to save toys to file')
     }
-    delete toy.owner.score
-    return _saveToysToFile().then(() => toy)
 }
 
-
-function _saveToysToFile() {
-    return new Promise((resolve, reject) => {
-        const data = JSON.stringify(toys, null, 2)
-        fs.writeFile('data/toy.json', data, (err) => {
-            if (err) {
-                loggerService.error('Cannot write to toys file', err)
-                return reject(err)
-            }
-            resolve()
+async function _saveToysToFile() {
+    return new Promise((resolve, reject) => { 
+        const data = JSON.stringify(toys, null, 2) 
+        fs.writeFile('data/toy.json', data, (err) => { 
+            if (err) { 
+                loggerService.error('Cannot write to toys file', err) 
+                reject(err)
+            } else {
+                resolve()
+            } 
         })
     })
 }
