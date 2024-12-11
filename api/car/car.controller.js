@@ -41,7 +41,7 @@ export async function addCar(req, res) {
 
 export async function updateCar(req, res) {
     try {
-        const car = req.body
+        const car = { ...req.body, _id: req.params.id }
         const updatedCar = await carService.update(car)
         res.json(updatedCar)
     } catch (err) {

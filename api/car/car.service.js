@@ -72,7 +72,7 @@ async function update(car) {
 		await collection.updateOne({ _id: ObjectId.createFromHexString(car._id) }, { $set: carToSave })
 		return car
 	} catch (err) {
-		logger.error(`cannot update car ${carId}`, err)
+		logger.error(`cannot update car ${car._id}`, err)
 		throw err
 	}
 }
