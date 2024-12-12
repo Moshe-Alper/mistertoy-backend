@@ -5,74 +5,74 @@ import { utilService } from './util.service.js'
 import { userService } from './user.service.js'
 
 
-const STORAGE_KEY = 'car'
+const STORAGE_KEY = 'toy'
 
-export const carService = {
+export const toyService = {
     query,
     getById,
     save,
     remove,
-    getEmptyCar,
-    addCarMsg
+    getEmptyToy,
+    addToyMsg
 }
-window.cs = carService
+window.cs = toyService
 
 
 async function query(filterBy = { txt: '', price: 0 }) {
     return httpService.get(STORAGE_KEY, filterBy)
 
-    // var cars = await storageService.query(STORAGE_KEY)
+    // var toys = await storageService.query(STORAGE_KEY)
     // if (filterBy.txt) {
     //     const regex = new RegExp(filterBy.txt, 'i')
-    //     cars = cars.filter(car => regex.test(car.vendor) || regex.test(car.description))
+    //     toys = toys.filter(toy => regex.test(toy.vendor) || regex.test(toy.description))
     // }
     // if (filterBy.price) {
-    //     cars = cars.filter(car => car.price <= filterBy.price)
+    //     toys = toys.filter(toy => toy.price <= filterBy.price)
     // }
-    // return cars
+    // return toys
 
 }
-function getById(carId) {
-    // return storageService.get(STORAGE_KEY, carId)
-    return httpService.get(`car/${carId}`)
+function getById(toyId) {
+    // return storageService.get(STORAGE_KEY, toyId)
+    return httpService.get(`toy/${toyId}`)
 }
 
-async function remove(carId) {
-    // await storageService.remove(STORAGE_KEY, carId)
-    return httpService.delete(`car/${carId}`)
+async function remove(toyId) {
+    // await storageService.remove(STORAGE_KEY, toyId)
+    return httpService.delete(`toy/${toyId}`)
 }
-async function save(car) {
-    var savedCar
-    if (car._id) {
-        // savedCar = await storageService.put(STORAGE_KEY, car)
-        savedCar = await httpService.put(`car/${car._id}`, car)
+async function save(toy) {
+    var savedToy
+    if (toy._id) {
+        // savedToy = await storageService.put(STORAGE_KEY, toy)
+        savedToy = await httpService.put(`toy/${toy._id}`, toy)
 
     } else {
         // Later, owner is set by the backend
-        // car.owner = userService.getLoggedinUser()
-        // savedCar = await storageService.post(STORAGE_KEY, car)
-        savedCar = await httpService.post('car', car)
+        // toy.owner = userService.getLoggedinUser()
+        // savedToy = await storageService.post(STORAGE_KEY, toy)
+        savedToy = await httpService.post('toy', toy)
     }
-    return savedCar
+    return savedToy
 }
 
-async function addCarMsg(carId, txt) {
-    // const car = await getById(carId)
-    // if (!car.msgs) car.msgs = []
+async function addToyMsg(toyId, txt) {
+    // const toy = await getById(toyId)
+    // if (!toy.msgs) toy.msgs = []
 
     // const msg = {
     //     id: utilService.makeId(),
     //     by: userService.getLoggedinUser(),
     //     txt
     // }
-    // car.msgs.push(msg)
-    // await storageService.put(STORAGE_KEY, car)    
-    const savedMsg = await httpService.post(`car/${carId}/msg`, {txt})
+    // toy.msgs.push(msg)
+    // await storageService.put(STORAGE_KEY, toy)    
+    const savedMsg = await httpService.post(`toy/${toyId}/msg`, {txt})
     return savedMsg
 }
 
 
-function getEmptyCar() {
+function getEmptyToy() {
     return {
         vendor: 'Susita-' + (Date.now() % 1000),
         price: utilService.getRandomIntInclusive(1000, 9000),

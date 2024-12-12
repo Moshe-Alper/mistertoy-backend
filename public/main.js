@@ -1,51 +1,51 @@
-import { carService } from './services/car.service.js'
+import { toyService } from './services/toy.service.js'
 import { userService } from './services/user.service.js'
 import { utilService } from './services/util.service.js'
 
 console.log('Simple driver to test some API calls')
 
-window.onLoadCars = onLoadCars
+window.onLoadToys = onLoadToys
 window.onLoadUsers = onLoadUsers
-window.onAddCar = onAddCar
-window.onGetCarById = onGetCarById
-window.onRemoveCar = onRemoveCar
-window.onAddCarMsg = onAddCarMsg
+window.onAddToy = onAddToy
+window.onGetToyById = onGetToyById
+window.onRemoveToy = onRemoveToy
+window.onAddToyMsg = onAddToyMsg
 
-async function onLoadCars() {
-    const cars = await carService.query()
-    render('Cars', cars)
+async function onLoadToys() {
+    const toys = await toyService.query()
+    render('Toys', toys)
 }
 async function onLoadUsers() {
     const users = await userService.query()
     render('Users', users)
 }
 
-async function onGetCarById() {
-    const id = prompt('Car id?')
+async function onGetToyById() {
+    const id = prompt('Toy id?')
     if (!id) return
-    const car = await carService.getById(id)
-    render('Car', car)
+    const toy = await toyService.getById(id)
+    render('Toy', toy)
 }
 
-async function onRemoveCar() {
-    const id = prompt('Car id?')
+async function onRemoveToy() {
+    const id = prompt('Toy id?')
     if (!id) return
-    await carService.remove(id)
-    render('Removed Car')
+    await toyService.remove(id)
+    render('Removed Toy')
 }
 
-async function onAddCar() {
+async function onAddToy() {
     await userService.login({ username: 'puki', password: 'secret' })
-    const savedCar = await carService.save(carService.getEmptyCar())
-    render('Saved Car', savedCar)
+    const savedToy = await toyService.save(toyService.getEmptyToy())
+    render('Saved Toy', savedToy)
 }
 
-async function onAddCarMsg() {
+async function onAddToyMsg() {
     await userService.login({ username: 'puki', password: 'secret' })
-    const id = prompt('Car id?')
+    const id = prompt('Toy id?')
     if (!id) return
 
-    const savedMsg = await carService.addCarMsg(id, 'some msg')
+    const savedMsg = await toyService.addToyMsg(id, 'some msg')
     render('Saved Msg', savedMsg)
 }
 

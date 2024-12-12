@@ -104,6 +104,7 @@ async function add(user) {
 
 function _buildCriteria(filterBy) {
 	const criteria = {}
+    
 	if (filterBy.txt) {
 		const txtCriteria = { $regex: filterBy.txt, $options: 'i' }
 		criteria.$or = [
